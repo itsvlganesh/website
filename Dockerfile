@@ -1,7 +1,6 @@
 FROM ubuntu
 RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get -y install apache2
-ADD . /var/www/html
-ENTRYPOINT apachectl -D FOREGROUND
-ENV name Intellipaat
+RUN apt-get install nginx -y
+ADD . /var/www/html/
+CMD ["nginx","-g","daemon off;"]
+
